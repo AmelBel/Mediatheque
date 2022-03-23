@@ -1,0 +1,38 @@
+package org.project.model;
+
+import java.util.Collection;
+import java.util.Date;
+
+import javax.persistence.Entity;
+
+import org.project.controller.UsersViews;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import lombok.Data;
+
+@Entity
+@Data
+public class CD extends Document {
+	
+	@JsonView(UsersViews.OneUser.class)
+	private String artiste_groupe; 
+	
+	@JsonView(UsersViews.OneUser.class)
+	private int duree; 
+	
+	@JsonView(UsersViews.OneUser.class)
+	private int nombreTitre;
+
+	public CD(long id, String titre, int nombreExemplaire, Date dateParution, Collection<Operation> operations,
+			String artiste_groupe, int duree, int nombreTitre) {
+		super(id, titre, nombreExemplaire, dateParution, operations);
+		this.artiste_groupe = artiste_groupe;
+		this.duree = duree;
+		this.nombreTitre = nombreTitre;
+	}
+
+	
+
+}
+

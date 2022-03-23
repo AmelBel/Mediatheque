@@ -1,0 +1,33 @@
+package org.project.service;
+
+import org.project.model.Document;
+import org.project.model.Operation;
+import org.springframework.data.domain.Page;
+
+public class MediathequeServiceImplementation implements IMediatheque {
+
+	@Override
+	public Document consulterDocument(long document_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void emprunter(long user_id, long document_id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void restituer(long user_id, long document_id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Page<Operation> listOperation(long user_id, int page, int size) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

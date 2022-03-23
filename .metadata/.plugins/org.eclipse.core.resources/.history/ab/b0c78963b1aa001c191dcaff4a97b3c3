@@ -1,0 +1,11 @@
+package org.project.service;
+
+import org.project.model.Document;
+
+public interface IMediatheque {
+
+	public Document consulterDocument(long document_id); 
+	public void emprunter(long user_id, long document_id); 
+	public void restituer( 
+	public void emprunter(); 
+}

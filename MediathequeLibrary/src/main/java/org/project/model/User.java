@@ -1,7 +1,8 @@
 package org.project.model;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.project.controller.UsersViews;
@@ -24,7 +23,7 @@ import lombok.Data;
 @Data
 //@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"login"})})
 
-public class User {
+public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,20 +40,15 @@ public class User {
 	private String prenom;
 	
 	
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
-	@JsonView(UsersViews.OneUser.class)
-	private Set<Document> documents = new HashSet<Document>();
-
-
-	public void effectuerEmprunt(Document document) {
-		this.documents.clear(); 
-		
-	}
 	
-	public void restituerEmprunt (Document document) {
-		
-		this.documents.add(document); 
-	}
+	
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true, mappedBy = "user")
+	@JsonView(UsersViews.OneUser.class)
+	private Set<Emprunt> emprunts = new HashSet<Emprunt>();
+	
+	
+	
+
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -74,6 +68,7 @@ public class User {
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
-	} 
+	}
+
 	
 }

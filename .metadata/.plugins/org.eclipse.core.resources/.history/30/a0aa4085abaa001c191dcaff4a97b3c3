@@ -1,0 +1,10 @@
+package org.project.model;
+
+import java.io.Serializable;
+
+//abstract on va faire soit un emprunt soit restutuer
+public abstract class Operation implements Serializable {
+	
+	private 
+
+}

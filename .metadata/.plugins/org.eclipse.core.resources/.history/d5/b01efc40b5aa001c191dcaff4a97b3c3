@@ -1,0 +1,14 @@
+package org.project.model;
+
+import javax.persistence.Entity;
+
+import lombok.Data;
+
+@Entity
+@Data
+public class Restituer extends Operation {
+	
+	
+	
+
+}

@@ -1,0 +1,11 @@
+package org.project.model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Restituer extends Operation {
+	
+	
+	
+
+}

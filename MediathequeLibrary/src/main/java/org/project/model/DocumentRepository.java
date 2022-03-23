@@ -15,9 +15,7 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
 //	
 //   Parcourir le catalogue du stock et visualiser les items disponibles à l’emprunt.
 	
-	@Query("from Document d, d.cd, d.dvd, d.livres where d.id=:id")
-	public List<Document> findAllItem(); 
-	
+
 	
 //   Permettre de voir les nouveautés, uniquement les CD
 	

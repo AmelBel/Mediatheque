@@ -1,0 +1,13 @@
+package org.project.model;
+
+import javax.persistence.Entity;
+
+import lombok.Data;
+
+@Entity
+@Data
+public class Emprun extends Operation {
+	
+
+	
+}

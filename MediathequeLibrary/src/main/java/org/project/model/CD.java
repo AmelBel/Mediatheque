@@ -1,5 +1,8 @@
 package org.project.model;
 
+import java.util.Collection;
+import java.util.Date;
+
 import javax.persistence.Entity;
 
 import org.project.controller.UsersViews;
@@ -19,8 +22,8 @@ public class CD extends Document {
 	private int duree; 
 	
 	@JsonView(UsersViews.OneUser.class)
-	private int nombreTitre; 
-	
+	private int nombreTitre;
+
 	
 
 }
