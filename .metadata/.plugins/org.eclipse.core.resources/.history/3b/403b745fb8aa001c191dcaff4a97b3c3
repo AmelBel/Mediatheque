@@ -21,11 +21,7 @@ insert into livre (id, ecrivain, numero_isbn) values (4, 'david', 5623);
 insert into cd (id, artiste_groupe, duree, nombre_titre) values (5, 'david', 120, 6);
 insert into dvd(id, realisateur, duree, type) values (6, 'david', 200, 'normal' );
 
-insert into emprunt (numero, date_emprunt, date_retour, user_id) values (1, '10-01-20', '15-01-20', 1); 
-
-insert into emprunt_documents (emprunt_numero, documents_id) values (1, 1); 
-insert into emprunt_documents (emprunt_numero, documents_id) values (1, 2); 
-
+insert into emprunt (id, date_emprunt, date_retour, user_id) values (1, '10-01-20', '15-01-20', 1); 
 
  
 
