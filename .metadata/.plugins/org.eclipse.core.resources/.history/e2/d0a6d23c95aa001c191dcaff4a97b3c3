@@ -1,0 +1,35 @@
+package org.projet.model;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
+import org.springframework.data.repository.query.Param;
+
+public interface DocumentRepository extends JpaRepository<Document, Long> {
+	
+	
+//	 Rechercher tous les documents deja prédéfit dans la classe de JPARepository 
+//	
+//   Parcourir le catalogue du stock et visualiser les items disponibles à l’emprunt.
+	
+	@Query("from Document d, d.cd, d.dvd, d.livres where d.id=:id")
+	public List<Document> findAllItem(); 
+	
+	
+//   Permettre de voir les nouveautés, uniquement les CD
+	
+//   Rechercher tous les documents d'un membre à partir de son nom (Penser à utiliser l’annotation @Query)
+//		
+//		@Query("select m.documents from Member m where m.nom=:nom")
+//		//Pour forcer le paramètre name en nom, on utilise l'annotation @Param
+//		public List<Document> findDocumentsByMemberName(@Param("nom") String name); 
+//		
+//
+//		@Query("select m.documents from Member m where m.id=:id")
+//		//Pour forcer le paramètre name en nom, on utilise l'annotation @Param
+//		public List<Document> findDocumentsByMemberId(Long id); 
+
+}

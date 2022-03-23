@@ -1,0 +1,37 @@
+package org.project.controller;
+
+import java.util.List;
+
+import org.project.model.User;
+import org.project.model.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+@RestController
+@RequestMapping("/mediatheque/users")
+
+public class UserRestController {
+	@Autowired
+	private UserRepository userRepository; 
+	
+	@GetMapping
+	@JsonView(UsersViews.AllUsers.class)
+	public List<User> findAllUser() {
+		return userRepository.findAll(); 
+	}
+	
+	@GetMapping("/{id}")
+	@JsonView(UsersViews.OneUser.class)
+	public User findOne(@PathVariable Long id) throws UserNotFoundExeption {
+		return userRepository.fullLoad(id).orElseThrow(() -> new UserNotFoundExeption()); 
+	}
+	
+	
+	
+
+}
