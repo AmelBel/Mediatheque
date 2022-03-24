@@ -1,0 +1,28 @@
+spring:
+  jpa:
+    show-sql: true
+    #Désactiver le pattern « Open Session in View »
+    open-in-view: false
+    
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+
+
+
+#Activer les traces de debug pour la sécurité 
+logging:
+  level:
+    '[org.springframework.security]': debug
+
+ 
+  jpa:
+    hibernate:
+      ddl-auto: update
+   

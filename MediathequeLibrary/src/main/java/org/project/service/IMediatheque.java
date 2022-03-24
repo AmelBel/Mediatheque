@@ -8,7 +8,7 @@ import org.project.model.User;
 
 public interface IMediatheque {
 
-	public List<Document> consulterDocument(); 
+	
 	public Emprunt effectuerEmprunt(User user, List<Document> documents) throws Exception;  
 	public void restituerEmprunt(User user,  Emprunt emprunt); 
 //	public List<Emprunt> visualiserEmprunt(User user,  Emprunt emprunt); 

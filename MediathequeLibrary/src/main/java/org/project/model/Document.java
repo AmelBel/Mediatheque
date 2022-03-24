@@ -1,7 +1,6 @@
 package org.project.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,6 +43,9 @@ public class Document implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonView(UsersViews.OneUser.class)
 	private Date dateParution; 
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateCreation; 
 	
 	
 	@PrePersist
