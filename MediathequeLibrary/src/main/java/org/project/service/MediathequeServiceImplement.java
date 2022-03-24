@@ -63,18 +63,22 @@ public class MediathequeServiceImplement implements IMediatheque {
 		
 
 	@Override
-	public void restituerEmprunt(User user, Emprunt emprunt) {
-//		
-//
-//		for (Document docDisponible: documents) {
-//			for (Document docEmprunter: emprunt.getDocuments() ) {
-//				if ((docDisponible.getId()== docEmprunter.getId())) {
-//					docDisponible.setNombreExemplaire(docDisponible.getNombreExemplaire()+1);
-//				}
-//			}
-//		}
-//
-//		empruntRepository.save(emprunt); 
+	public void restituerEmprunt(User user, Emprunt emprunt) throws Exception {
+	
+		List<Document> documentEmprunt = emprunt.getDocuments(); 
+		
+		emprunt.setDateRetour(new Date());
+		
+		for (Document doc: documentEmprunt) {
+			
+			Document dr = documentRepository.findById(doc.getId()).orElseThrow(() -> new Exception());
+			dr.setNombreExemplaire(dr.getNombreExemplaire() + 1);
+			
+		}
+		documentEmprunt.clear();
+		emprunt.setDocuments(documentEmprunt);
+		emprunt.setUser(null);
+					
 	}
 
 //	@Override

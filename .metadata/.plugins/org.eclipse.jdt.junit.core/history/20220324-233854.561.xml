@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun MediathequeServiceTest" project="MediathequeLibrary" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="org.project.service.MediathequeServiceTest" time="0.638" displayname="MediathequeServiceTest" uniqueid="[engine:junit-jupiter]/[class:org.project.service.MediathequeServiceTest]">
+    <testcase name="whenEmpruntIsRestored" classname="org.project.service.MediathequeServiceTest" time="0.577" displayname="whenEmpruntIsRestored()" uniqueid="[engine:junit-jupiter]/[class:org.project.service.MediathequeServiceTest]/[method:whenEmpruntIsRestored()]"/>
+    <testcase name="whenAllIsOkEmpruntIsCreated" classname="org.project.service.MediathequeServiceTest" time="0.03" displayname="whenAllIsOkEmpruntIsCreated()" uniqueid="[engine:junit-jupiter]/[class:org.project.service.MediathequeServiceTest]/[method:whenAllIsOkEmpruntIsCreated()]"/>
+    <testcase name="whenQuotaExceedThrowException" classname="org.project.service.MediathequeServiceTest" time="0.028" displayname="whenQuotaExceedThrowException()" uniqueid="[engine:junit-jupiter]/[class:org.project.service.MediathequeServiceTest]/[method:whenQuotaExceedThrowException()]"/>
+  </testsuite>
+</testrun>

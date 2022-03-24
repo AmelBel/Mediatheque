@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UserRepositoryTest" project="MediathequeLibrary" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="org.project.repository.UserRepositoryTest" time="0.433" displayname="UserRepositoryTest" uniqueid="[engine:junit-jupiter]/[class:org.project.repository.UserRepositoryTest]">
+    <testcase name="testUpdateUser" classname="org.project.repository.UserRepositoryTest" time="0.433" displayname="testUpdateUser()" uniqueid="[engine:junit-jupiter]/[class:org.project.repository.UserRepositoryTest]/[method:testUpdateUser()]"/>
+  </testsuite>
+</testrun>

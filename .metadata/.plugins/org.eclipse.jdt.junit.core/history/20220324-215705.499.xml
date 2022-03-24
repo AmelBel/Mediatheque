@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DocumentRepositoryTest" project="MediathequeLibrary" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="org.project.repository.DocumentRepositoryTest" time="0.598" displayname="DocumentRepositoryTest" uniqueid="[engine:junit-jupiter]/[class:org.project.repository.DocumentRepositoryTest]">
+    <testcase name="testByContainingTitreIgnoringCase" classname="org.project.repository.DocumentRepositoryTest" time="0.542" displayname="testByContainingTitreIgnoringCase()" uniqueid="[engine:junit-jupiter]/[class:org.project.repository.DocumentRepositoryTest]/[method:testByContainingTitreIgnoringCase()]"/>
+    <testcase name="testaddDocument" classname="org.project.repository.DocumentRepositoryTest" time="0.054" displayname="testaddDocument()" uniqueid="[engine:junit-jupiter]/[class:org.project.repository.DocumentRepositoryTest]/[method:testaddDocument()]"/>
+  </testsuite>
+</testrun>

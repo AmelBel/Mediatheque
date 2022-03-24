@@ -25,69 +25,69 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/mediatheque/catalogue")
 public class DocumentRestController {
-	
+
 	@Autowired
 	private DocumentRepository documentRepository; 
-	
+
 	@Autowired
 	private CDRepository cdRepository; 
-	
+
 	@Autowired
 	private DVDRepository dvdRepository; 
-	
+
 	@Autowired
 	private LivreRepository livreRepository;  
-	
-	
+
+
 	@GetMapping
 	public List<Document> findAllDocument () {
 		return documentRepository.findAll(); 
-		
+
 	}
-	
+
 	@GetMapping("/CD")
 	public List<CD> findAllCD () {
 		return cdRepository.findAll(); 
-			
+
 	}
-	
+
 
 	@GetMapping("/Livre")
 	public List<Livre> findAllLivre () {
 		return livreRepository.findAll(); 	
 	}
-	
+
 	@GetMapping("/DVD")
 	public List<DVD> findAllDvd () {
 		return dvdRepository.findAll(); 
 	}
-	
-	
+
+
 	@GetMapping("/NouveauteCD")
 	public List<CD> findByNewDateCreation () {
-		
+
 		return cdRepository.findAll(); 
 	}
-	
+
 	//afficher les documents dont le titre contenant une chaîne particulière
 	// pour tester sur le navigateur : http://localhost:8080/mediatheque/catalogue/search?q=ga, ga c'est la chaine recherché!
 	@GetMapping("/search")
 	public Optional<Document>  searchDocumentByString(@RequestParam String q) {
-			
-			return documentRepository.findBytitreContainingIgnoreCase(q); 
-	}
-	
-	// ajouter un nouveau document
-		@PostMapping
-		public ResponseEntity<Void> addDocumentToCatalogue(@RequestBody Document document) {
-			
-			documentRepository.save(document); 
-			document.setDateCreation(new Date());
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT); 
-		}
-		
 
-	
-	
+		return documentRepository.findBytitreContainingIgnoreCase(q); 
+	}
+
+	// ajouter un nouveau document
+	@PostMapping
+	public ResponseEntity<Void> addDocumentToCatalogue(@RequestBody Document document) {
+
+		documentRepository.save(document); 
+		document.setDateCreation(new Date());
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT); 
+	}
+
+
+
+
 
 }

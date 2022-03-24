@@ -1,8 +1,11 @@
 package org.project.repository;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +33,23 @@ public class DocumentRepositoryTest {
 		
 		assertTrue(!notFound.isPresent());
 				
+	}
+	
+	@Test 
+	void testaddDocument () {
+		
+		long intialDocumentCount = documentRepository.count(); 
+		
+		Document newDocument = new Document(); 
+		newDocument.setTitre("NewTitle");
+		newDocument.setDateParution(new Date());
+		newDocument.setNombreExemplaire(20);
+		
+		documentRepository.save(newDocument); 
+		
+		assertEquals(intialDocumentCount +1, documentRepository.count());
+				
+		
 	}
 	
 

@@ -26,9 +26,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public Optional<User> fullLoad(Long id);
 
     
- // sauvegarder un client 
-   // public User saveUser(User user); 
-    
+ 
     
 	
 }

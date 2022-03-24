@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DocumentRepositoryTest" project="MediathequeLibrary" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="org.project.repository.DocumentRepositoryTest" time="0.546" displayname="DocumentRepositoryTest" uniqueid="[engine:junit-jupiter]/[class:org.project.repository.DocumentRepositoryTest]">
+    <testcase name="testByTitreIgnoringCase" classname="org.project.repository.DocumentRepositoryTest" time="0.546" displayname="testByTitreIgnoringCase()" uniqueid="[engine:junit-jupiter]/[class:org.project.repository.DocumentRepositoryTest]/[method:testByTitreIgnoringCase()]"/>
+  </testsuite>
+</testrun>
