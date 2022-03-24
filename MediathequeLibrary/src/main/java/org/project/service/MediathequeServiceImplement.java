@@ -1,12 +1,15 @@
 package org.project.service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.project.model.Document;
-import org.project.model.DocumentRepository;
 import org.project.model.Emprunt;
-import org.project.model.EmpruntRepository;
 import org.project.model.User;
+import org.project.repository.DocumentRepository;
+import org.project.repository.EmpruntRepository;
+import org.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +22,9 @@ public class MediathequeServiceImplement implements IMediatheque {
 
 	@Autowired
 	private EmpruntRepository empruntRepository; 
+	
+	@Autowired
+	private UserRepository userRepository; 
 
 	@Override
 	public List<Document> consulterDocument() {
@@ -27,30 +33,40 @@ public class MediathequeServiceImplement implements IMediatheque {
 	}
 
 	@Override
-	public void effectuerEmprunt(User user, Emprunt emprunt) {
-		List<Document> documents = consulterDocument();  
-
-		for (Document docDisponible: documents) {
-			for (Document docEmprunter: emprunt.getDocuments() ) {
-				if ((docDisponible.getId() == docEmprunter.getId()) && docEmprunter.getNombreExemplaire()> 0) {
-					
-					if (user.getEmprunts().size() < 3 ) {
-						docDisponible.setNombreExemplaire(docDisponible.getNombreExemplaire()-1);
-						documentRepository.save(docDisponible); 
-					}
-					else
-						System.out.println("Vous avez atteint le nombre maximum d'emprunts");
-			
-				}
-				else 
-					System.out.println("le document n'est pas disponible");
-			}
-		}
-
-		empruntRepository.save(emprunt); 
-
-
-	}
+	public Emprunt effectuerEmprunt (User user, List<Document> documents) throws Exception {
+		
+	        List<Document> documentEmprunt = new ArrayList<>();
+	        
+	        for (Document document : documents) {
+	        	
+	            Document dr = documentRepository.findById(document.getId()).orElseThrow(() -> new Exception());
+	            if (dr.getNombreExemplaire() == 0) {
+	                throw new Exception();
+	            }
+	            dr.setNombreExemplaire(dr.getNombreExemplaire()-1);
+	            documentEmprunt.add(dr);
+	        }
+	 
+	            Emprunt emprunt = new Emprunt(); 
+	            emprunt.setDateEmprunt(new Date());
+	            emprunt.setDocuments(documentEmprunt);
+	            emprunt.setUser(user);
+	        
+	         
+	            if(user.getEmprunts().size() < 3) {
+	                empruntRepository.save(emprunt);
+	            } else {
+	                throw new Exception();
+	            }
+	            for ( Document document : documentEmprunt ) {
+	               documentRepository.save(document);
+	            }
+	 
+	        
+	        return emprunt;
+	    }
+		
+		
 
 	@Override
 	public void restituerEmprunt(User user, Emprunt emprunt) {

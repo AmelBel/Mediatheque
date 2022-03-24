@@ -4,7 +4,7 @@ import java.util.List;
 
 
 import org.project.model.User;
-import org.project.model.UserRepository;
+import org.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,8 +32,8 @@ public class UserRestController {
 	
 	@GetMapping("/{id}")
 	@JsonView(UsersViews.OneUser.class)
-	public User findOne(@PathVariable Long id) throws UserNotFoundExeption {
-		return userRepository.fullLoad(id).orElseThrow(() -> new UserNotFoundExeption()); 
+	public User findOne(@PathVariable Long id) throws UserNotFountException {
+		return userRepository.fullLoad(id).orElseThrow(() -> new UserNotFountException()); 
 	}
 	
 //	//Créer un user

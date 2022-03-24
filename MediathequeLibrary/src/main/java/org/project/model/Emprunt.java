@@ -30,21 +30,6 @@ public class Emprunt {
 	@OneToMany
 	private List<Document> documents;
 
-	public Emprunt(long numero, Date dateEmprunt, Date dateRetour, User user, List<Document> documents) {
-		super();
-		this.numero = numero;
-		this.dateEmprunt = dateEmprunt;
-		this.dateRetour = dateRetour;
-		this.user = user;
-		this.documents = documents;
-	}
-
-	public Emprunt(User user, List<Document> documents) {
-		super();
-		this.user = user;
-		this.documents = documents;
-	} 
-	
 	
 
 

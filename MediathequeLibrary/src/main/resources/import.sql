@@ -14,12 +14,12 @@ insert into document (id, titre, nombre_Exemplaire, date_Parution) values (6, 'F
 
 insert into livre (id, ecrivain, numero_isbn) values (1, 'amel', 1253); 
 insert into cd (id, artiste_groupe, duree, nombre_titre) values (2, 'amel', 50, 5);
-insert into dvd(id, realisateur, duree, type) values (3, 'amel', 80, 'blue_ray' ); 
+insert into dvd(id, realisateur, duree, type) values (3, 'amel', 80, 'BLUE_RAY' ); 
 
 
 insert into livre (id, ecrivain, numero_isbn) values (4, 'david', 5623); 
 insert into cd (id, artiste_groupe, duree, nombre_titre) values (5, 'david', 120, 6);
-insert into dvd(id, realisateur, duree, type) values (6, 'david', 200, 'normal' );
+insert into dvd(id, realisateur, duree, type) values (6, 'david', 200, 'NORMAL' );
 
 insert into emprunt (numero, date_emprunt, date_retour, user_id) values (1, '10-01-20', '15-01-20', 1); 
 

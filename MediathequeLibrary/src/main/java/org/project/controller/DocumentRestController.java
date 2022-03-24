@@ -5,8 +5,11 @@ import java.util.List;
 import org.project.model.CD;
 import org.project.model.DVD;
 import org.project.model.Document;
-import org.project.model.DocumentRepository;
 import org.project.model.Livre;
+import org.project.repository.CDRepository;
+import org.project.repository.DVDRepository;
+import org.project.repository.DocumentRepository;
+import org.project.repository.LivreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +23,15 @@ public class DocumentRestController {
 	@Autowired
 	private DocumentRepository documentRepository; 
 	
+	@Autowired
+	private CDRepository cdRepository; 
+	
+	@Autowired
+	private DVDRepository dvdRepository; 
+	
+	@Autowired
+	private LivreRepository livreRepository;  
+	
 	
 	@GetMapping
 	public List<Document> findAllDocument () {
@@ -28,29 +40,25 @@ public class DocumentRestController {
 	}
 	
 	@GetMapping("/CD")
-	public List<Document> findAllCD () {
-		if ( documentRepository instanceof CD)
-			return documentRepository.findAll();
-		return null; 	
+	public List<CD> findAllCD () {
+		return cdRepository.findAll(); 
+			
 	}
 	
+
 	@GetMapping("/Livre")
-	public List<Document> findAllLivre () {
-		if ( documentRepository instanceof Livre)
-			return documentRepository.findAll();
-		return null; 	
+	public List<Livre> findAllLivre () {
+		return livreRepository.findAll(); 	
 	}
 	
 	@GetMapping("/DVD")
-	public List<Document> findAllDvd () {
-		if ( documentRepository instanceof DVD)
-			return documentRepository.findAll();
-		return null; 	
+	public List<DVD> findAllDvd () {
+		return dvdRepository.findAll(); 
 	}
 	
 	
 	//afficher les documents dont le titre contenant une chaîne particulière
-	// pour voir sur le web on test sur l navigateur : http://localhost:8080/mediatheque/catalogue/search?q=ga, ga c'est la chaine recherché!
+	// pour tester sur le navigateur : http://localhost:8080/mediatheque/catalogue/search?q=ga, ga c'est la chaine recherché!
 	@GetMapping("/search")
 	public List<Document>  searchDocumentByString(@RequestParam String q) {
 			
