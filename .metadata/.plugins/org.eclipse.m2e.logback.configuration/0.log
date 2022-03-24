@@ -2240,3 +2240,10 @@ java.net.URISyntaxException: Illegal character in path at index 44: file:/C:/Use
 2022-03-24 17:14:09,781 [Worker-217: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2022-03-24 17:14:09,781 [Worker-217: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2022-03-24 17:14:09,781 [Worker-217: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\MediathequeLibrary\MediathequeLibrary\src\test\resources
+2022-03-24 17:20:00,744 [Worker-228: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-03-24 17:20:00,744 [Worker-228: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-03-24 17:20:00,745 [Worker-228: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-03-24 17:20:00,752 [Worker-228: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-03-24 17:20:00,754 [Worker-228: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-03-24 17:20:00,754 [Worker-228: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-03-24 17:20:00,754 [Worker-228: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\MediathequeLibrary\MediathequeLibrary\src\test\resources
