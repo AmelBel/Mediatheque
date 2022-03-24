@@ -48,8 +48,6 @@ public class Document implements Serializable {
 	private Date dateParution; 
 	
 	
-	
-	
 	@PrePersist
 	private void onCreate() {
 		dateParution = new Date(); 

@@ -1,0 +1,49 @@
+package org.project.controller;
+
+import java.util.List;
+
+import org.formation.controller.MemberNotFoundExeption;
+import org.formation.model.Member;
+import org.project.model.Document;
+import org.project.model.DocumentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/mediatheque/catalogue")
+public class DocumentRestController {
+	
+	@Autowired
+	private DocumentRepository documentRepository; 
+	
+	@Autowired
+	private UserRepository userRepository
+	
+	@GetMapping
+	public List<Document> findAllDocument () {
+		return documentRepository.findAll(); 
+		
+	}
+	
+
+	// ajouter un document à un membre
+	@PostMapping("/{id}")
+	public ResponseEntity<Void> addDocumentToUser(@RequestBody Document document, @PathVariable Long id) throws UserNotFoundExeption {
+		User user = userRepository.findById(id).orElseThrow(() -> new MemberNotFoundExeption());
+		member.addDocument(document);
+		memberRepository.save(member); 
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT); 
+	}
+	
+	
+	
+	
+
+}

@@ -1,6 +1,9 @@
 package org.project.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.NotNull;
 
 import org.project.controller.UsersViews;
 
@@ -15,9 +18,11 @@ public class DVD extends Document {
 	@JsonView(UsersViews.OneUser.class)
 	private String realisateur; 
 	
+	@NotNull
 	@JsonView(UsersViews.OneUser.class)
 	private int duree; 
 	
+	@Enumerated(EnumType.STRING)
 	@JsonView(UsersViews.OneUser.class)
-	private String type;  //(blue-ray ou normal)
+	private TypeDVD type;
 }

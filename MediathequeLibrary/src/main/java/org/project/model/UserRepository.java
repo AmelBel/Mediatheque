@@ -18,10 +18,15 @@ public interface UserRepository extends JpaRepository<User, Long> {
 //	Compter les membres deja prédéfit dans la classe JPARepository
 
 	
-//	Trouver un user à partir de son ID avec tous les documents associés pré-chargés
+//	Trouver un user à partir de son ID avec tous les emprunts associés pré-chargés
 
-    @Query("from User u left join fetch u.documents where u.id =:id")
+    @Query("from User u left join fetch u.emprunts where u.id =:id")
     public Optional<User> fullLoad(Long id);
 
+    
+ // sauvegarder un client 
+   // public User saveUser(User user); 
+    
+    
 	
 }

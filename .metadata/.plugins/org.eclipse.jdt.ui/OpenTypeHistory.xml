@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=MediathequeLibrary/C:\/Users\/Administrateur\/Documents\/JDPM - GPNI\/sts-4.13.1.RELEASE\/plugins\/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.1.v20211116-1657\/jre\/lib\/jrt-fs.jar`java.base=/maven.pomderived=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/17\/docs\/api\/=/&lt;java.io(Serializable.class[Serializable" modifiers="1537" timestamp="1644512214178"/>
+    <typeInfo handle="=MediathequeLibrary/C:\/Users\/Administrateur\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/2.6.2\/spring-data-jpa-2.6.2.jar=/maven.pomderived=/true=/=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/2.6.2=/=/maven.scope=/compile=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1646390438816"/>
+    <typeInfo handle="=MediathequeLibrary/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.project.service{IMediatheque.java[IMediatheque" modifiers="513" timestamp="1648044686885"/>
+</typeInfoHistroy>

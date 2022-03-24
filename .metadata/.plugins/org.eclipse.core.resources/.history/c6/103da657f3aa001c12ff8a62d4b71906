@@ -1,0 +1,14 @@
+package org.project.service;
+
+import org.project.model.Document;
+import org.project.model.Emprunt;
+import org.project.model.User;
+
+public interface IMediatheque {
+
+	public Document consulterDocument(<List>DDocument document); 
+	public void effectuerEmprunt(User user, Emprunt emprunt); 
+	public void restituerEmprunt(User user,  Emprunt emprunt); 
+	public void visualiserEmprunt(User user,  Emprunt emprunt); 
+	
+}

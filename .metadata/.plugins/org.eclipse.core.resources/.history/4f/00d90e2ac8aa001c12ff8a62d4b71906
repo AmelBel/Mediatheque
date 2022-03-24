@@ -1,0 +1,13 @@
+package org.project.service;
+
+import org.project.model.Document;
+
+import org.springframework.data.domain.Page;
+
+public interface IMediatheque {
+
+	public Document consulterDocument(Document document); 
+	public void effectuerEmprunt(User user, Document document); 
+	public void restituerEmprunt(User user, Document document); 
+	
+}

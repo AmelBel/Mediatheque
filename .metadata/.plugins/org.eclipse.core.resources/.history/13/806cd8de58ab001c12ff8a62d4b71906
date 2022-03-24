@@ -1,0 +1,22 @@
+package org.project.model;
+
+import java.util.List;
+
+
+public interface DocumentRepository extends JpaRepository<Document, Long> {
+	
+	
+//	 Rechercher tous les documents deja prédéfit dans la classe de JPARepository 
+//	
+//   Parcourir le catalogue du stock et visualiser les items disponibles à l’emprunt.
+	
+	
+//   Permettre de voir les nouveautés, uniquement les CD
+	
+	
+	//afficher les documents dont le titre contenant une chaîne particulière
+	public List<Document> findBytitreContainingIgnoreCase(String chaineTitre); 
+	
+	
+
+}

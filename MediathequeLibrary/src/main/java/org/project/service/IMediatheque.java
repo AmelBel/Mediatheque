@@ -1,13 +1,16 @@
 package org.project.service;
 
-import org.project.model.Document;
+import java.util.List;
 
-import org.springframework.data.domain.Page;
+import org.project.model.Document;
+import org.project.model.Emprunt;
+import org.project.model.User;
 
 public interface IMediatheque {
-//
-//	public Document consulterDocument(long document_id); 
-//	public void emprunter(long user_id, long document_id); 
-//	public void restituer( long user_id, long document_id); 
-//	
+
+	public List<Document> consulterDocument(); 
+	public void effectuerEmprunt(User user, Emprunt emprunt); 
+	public void restituerEmprunt(User user,  Emprunt emprunt); 
+//	public List<Emprunt> visualiserEmprunt(User user,  Emprunt emprunt); 
+	
 }

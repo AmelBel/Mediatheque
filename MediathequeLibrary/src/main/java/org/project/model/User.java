@@ -40,15 +40,9 @@ public class User implements Serializable {
 	private String prenom;
 	
 	
-	
-	
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true, mappedBy = "user")
 	@JsonView(UsersViews.OneUser.class)
 	private Set<Emprunt> emprunts = new HashSet<Emprunt>();
-	
-	
-	
-
 	
 	@Override
 	public boolean equals(Object obj) {
