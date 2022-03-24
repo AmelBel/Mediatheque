@@ -32,9 +32,18 @@ public class MediathequeServiceImplement implements IMediatheque {
 
 		for (Document docDisponible: documents) {
 			for (Document docEmprunter: emprunt.getDocuments() ) {
-				if ((docDisponible.getId()== docEmprunter.getId()) && docEmprunter.getNombreExemplaire()> 0) {
-					docDisponible.setNombreExemplaire(docDisponible.getNombreExemplaire()-1);
+				if ((docDisponible.getId() == docEmprunter.getId()) && docEmprunter.getNombreExemplaire()> 0) {
+					
+					if (user.getEmprunts().size() < 3 ) {
+						docDisponible.setNombreExemplaire(docDisponible.getNombreExemplaire()-1);
+						documentRepository.save(docDisponible); 
+					}
+					else
+						System.out.println("Vous avez atteint le nombre maximum d'emprunts");
+			
 				}
+				else 
+					System.out.println("le document n'est pas disponible");
 			}
 		}
 

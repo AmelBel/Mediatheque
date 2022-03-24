@@ -51,11 +51,11 @@ public class DocumentRestController {
 	
 	//afficher les documents dont le titre contenant une chaîne particulière
 	// pour voir sur le web on test sur l navigateur : http://localhost:8080/mediatheque/catalogue/search?q=ga, ga c'est la chaine recherché!
-		@GetMapping("/search")
-		public List<Document>  searchDocumentByString(@RequestParam String q) {
+	@GetMapping("/search")
+	public List<Document>  searchDocumentByString(@RequestParam String q) {
 			
 			return documentRepository.findBytitreContainingIgnoreCase(q); 
-		}
+	}
 		
 
 	
