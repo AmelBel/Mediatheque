@@ -25,11 +25,11 @@ public class DocumentRepositoryTest {
 	@Test 
 	void testByContainingTitreIgnoringCase() {
 		
-		Optional<Document> found = documentRepository.findBytitreContainingIgnoreCase("Formidable"); 
+		Optional<Document> found = documentRepository.findAllBytitreContainingIgnoreCase("Formidable"); 
 		
 		assertTrue(found.isPresent());
 		
-		Optional<Document> notFound = documentRepository.findBytitreContainingIgnoreCase("notfound"); 
+		Optional<Document> notFound = documentRepository.findAllBytitreContainingIgnoreCase("notfound"); 
 		
 		assertTrue(!notFound.isPresent());
 				

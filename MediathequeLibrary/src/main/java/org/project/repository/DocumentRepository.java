@@ -1,5 +1,6 @@
 package org.project.repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,9 +24,15 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
 //	public List<CD> findByRecenteDateParution(); 
 	
 	//afficher les documents dont le titre contenant une chaîne particulière
-	public List<Document> findAllBytitreContainingIgnoreCase(String chaineTitre); 
-	
-	
+	public Optional<Document> findAllByTitreContainingIgnoreCase(String chaineTitre); 
+//	
+//	//afficher les documents par date parution
+//		public Optional<Document> findAllByDateParution(Date requestDateParution); 
+//		
+//		//afficher les documents par type 
+//		public Optional<Document> findAllByTypeDocument(String typeDocument); 
+//	
+//	
 	
 
 }

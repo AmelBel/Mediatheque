@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import org.project.controller.EmpruntViews;
 import org.project.controller.UsersViews;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,7 +23,7 @@ import lombok.Data;
 
 @Entity
 @Data
-//@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"login"})})
+
 
 public class User implements Serializable {
 	
@@ -42,7 +43,7 @@ public class User implements Serializable {
 	
 	
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true, mappedBy = "user")// Merge: il traite que les mises à jours
-	@JsonIgnore
+	@JsonView(UsersViews.OneUser.class)
 	private Set<Emprunt> emprunts = new HashSet<Emprunt>();
 	
 	

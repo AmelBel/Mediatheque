@@ -13,6 +13,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.project.controller.EmpruntViews;
 import org.project.controller.UsersViews;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -43,9 +44,6 @@ public class Document implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonView(UsersViews.OneUser.class)
 	private Date dateParution; 
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCreation; 
 	
 	
 	@PrePersist

@@ -70,28 +70,21 @@ public class DocumentRestController {
 //	}
 
 	//afficher les documents dont le titre contenant une chaîne particulière
+	//avec une date
+	//avec type document ( CD/DVD/LIVRE)
 	// pour tester sur le navigateur : http://localhost:8080/mediatheque/catalogue/search?q=ga, ga c'est la chaine recherché!
+	//, @RequestParam Date requestDateParution, @RequestParam String typeDocument
 	@GetMapping("/search")
-	public List<Document>  searchDocumentByString(@RequestParam String q) {
-		return documentRepository.findAllBytitreContainingIgnoreCase(q); 
+	public Optional<Document>  searchDocumentByString(@RequestParam String q) {
+		return documentRepository.findAllByTitreContainingIgnoreCase(q); 
+		
 	}
-
-//	// ajouter un nouveau document
-//	@PostMapping
-//	public ResponseEntity<Void> addDocumentToCatalogue(@RequestBody Document document) {
-//
-//		documentRepository.save(document); 
-//		document.setDateCreation(new Date());
-//		return new ResponseEntity<>(HttpStatus.CREATED);
-//	}
 
 	
 	// ajouter un nouveau document
 		@PostMapping
 		public Document addDocumentToCatalogue(@RequestBody Document document) {
-
 			documentRepository.save(document); 
-			document.setDateCreation(new Date());
 			return document; 
 		}
 

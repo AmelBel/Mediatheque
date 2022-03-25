@@ -11590,3 +11590,102 @@ java.net.URISyntaxException: Illegal character in path at index 44: file:/C:/Use
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 10:39:34.539
 !MESSAGE executing callback sts4.classpath.twNGRvkA SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 15:04:30.177
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 15:04:30.185
+!MESSAGE classpath=127 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 15:04:30.191
+!MESSAGE buffering callback sts4.classpath.twNGRvkA MediathequeLibrary false 127
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 15:04:30.191
+!MESSAGE executing callback sts4.classpath.twNGRvkA 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 15:04:30.360
+!MESSAGE executing callback sts4.classpath.twNGRvkA SUCCESS [done]
+
+!ENTRY org.eclipse.lsp4e 2 0 2022-03-25 15:40:23.311
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:27.600
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.twNGRvkA
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:27.601
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.twNGRvkA
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:27.601
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:27.602
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.twNGRvkA => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:31.452
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:31.452
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@275b70f0[org.springframework.tooling.boot.ls:1.30.0.202201310805(id=564)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:31.453
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.046
+!MESSAGE Boot LS startup time from start to initialized: 2590ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.159
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.XqaeLxpMisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.160
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.161
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.161
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.162
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.162
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.XqaeLxpM => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.170
+!MESSAGE classpath=127 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.176
+!MESSAGE buffering callback sts4.classpath.XqaeLxpM MediathequeLibrary false 127
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.176
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.183
+!MESSAGE classpath=127 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.189
+!MESSAGE buffering callback sts4.classpath.XqaeLxpM Mediatheque false 127
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.189
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.199
+!MESSAGE classpath=131 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.204
+!MESSAGE buffering callback sts4.classpath.XqaeLxpM Tp4 false 131
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.204
+!MESSAGE executing callback sts4.classpath.XqaeLxpM 3 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-25 19:32:34.716
+!MESSAGE executing callback sts4.classpath.XqaeLxpM SUCCESS [done]

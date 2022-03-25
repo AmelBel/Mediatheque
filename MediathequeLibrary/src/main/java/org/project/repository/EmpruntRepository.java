@@ -11,9 +11,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface EmpruntRepository extends JpaRepository<Emprunt, Long> {
 
-	
-	
-//	 @Query("from User u left join fetch u.emprunts where u.id =:id")
-	 @Query("select u.emprunts from User u where u.id=:id")
-	 public List<Emprunt> findEmpruntsByUserID(@Param("id")Long id);
+//	Trouver un user à partir de son ID avec tous les emprunts associés
+	 @Query("select u.emprunts from User u where u.id =:id")
+	 public List<Emprunt> findAllEmpruntByUserId(@Param("id") Long id);
 }

@@ -2,7 +2,10 @@ package org.project.controller;
 
 
 import java.util.List;
+
+import org.project.model.Emprunt;
 import org.project.model.User;
+import org.project.repository.EmpruntRepository;
 import org.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +26,9 @@ public class UserRestController {
 
 	@Autowired
 	private UserRepository userRepository; 
+	
+	@Autowired
+	private EmpruntRepository empruntRepository; 
 
 	@GetMapping
 	@JsonView(UsersViews.AllUsers.class)
@@ -30,10 +36,10 @@ public class UserRestController {
 		return userRepository.findAll(); 
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/{id_user}")
 	@JsonView(UsersViews.OneUser.class)
-	public User findOne(@PathVariable Long id) throws UserNotFountException {
-		return userRepository.fullLoad(id).orElseThrow(() -> new UserNotFountException()); 
+	public User findOne(@PathVariable Long id_user) throws UserNotFountException {
+		return userRepository.fullLoad(id_user).orElseThrow(() -> new UserNotFountException()); 
 	}
 
 	//Créer un user
@@ -44,7 +50,7 @@ public class UserRestController {
 		return new ResponseEntity<User>(user, HttpStatus.CREATED); 
 	} 
 
-	//Mettre à jour d'un membre
+	//Mettre à jour d'un user
 	@PutMapping
 	@JsonView(UsersViews.OneUser.class)
 	public User upDateUser(@RequestBody User user) throws UserNotFountException {
@@ -52,4 +58,14 @@ public class UserRestController {
 		userRepository.save(user); 
 		return user;
 	}
+	
+	
+	// Visualiser les emprunts d'un utilisateur
+		@GetMapping("/{id_user}/Emprunts")
+		@JsonView(UsersViews.OneUser.class)
+		public List<Emprunt> findAllEmpruntByUserId(@PathVariable Long id_user) throws UserNotFountException {
+			userRepository.findById(id_user).orElseThrow(() -> new UserNotFountException()); 
+			return empruntRepository.findAllEmpruntByUserId(id_user); 		
+		}
+	
 }

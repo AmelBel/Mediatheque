@@ -71,29 +71,16 @@ public class MediathequeServiceImplement implements IMediatheque {
 
 		emprunt.setDateRetour(new Date());
 
-//		Date dateEmpr = emprunt.getDateEmprunt(); 
-//		Date dateRe = emprunt.getDateRetour(); 
-//		long dureeEmprunt = dateRe.getTime() - dateEmpr.getTime(); 
-//		dureeEmprunt / 1000 * 60 * 60 * 24 * 7; 
-//		
-
 		for (Document doc : documentEmprunt) {
-
 			Document dr = documentRepository.findById(doc.getId()).orElseThrow(() -> new Exception());
 			dr.setNombreExemplaire(dr.getNombreExemplaire() + 1);
 			documentRepository.save(dr);
-
 		}
-//		documentEmprunt.clear();
-//		emprunt.setDocuments(documentEmprunt);
+
 		empruntRepository.deleteById(emprunt.getNumero());
 
 	}
 
-//	@Override
-//	public List<Emprunt> visualiserEmprunt(User user, Emprunt emprunt) {
-//		
-//		return empruntRepository.visualiserEmprunt(user, emprunt); 
-//	}
+
 
 }

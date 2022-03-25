@@ -11,6 +11,6 @@ public interface IMediatheque {
 	
 	public Emprunt effectuerEmprunt(User user, List<Document> documents) throws Exception;  
 	public void restituerEmprunt( Emprunt emprunt) throws Exception ; 
-//	public List<Emprunt> visualiserEmprunt(User user,  Emprunt emprunt); 
+
 	
 }

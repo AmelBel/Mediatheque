@@ -1,0 +1,57 @@
+package org.project.controller;
+
+import java.util.List;
+
+import org.project.model.Document;
+import org.project.model.Emprunt;
+import org.project.model.User;
+import org.project.repository.EmpruntRepository;
+import org.project.repository.UserRepository;
+import org.project.service.IMediatheque;
+import org.project.service.MediathequeServiceImplement;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/mediatheque")
+public class EmpruntRestController {
+	@Autowired
+	private IMediatheque iMediatheque;
+	@Autowired
+	private EmpruntRepository empruntRepository;
+	@Autowired
+	private UserRepository userRepository;
+	
+
+	@PostMapping("/Emprunt/{id_user}")
+	public Emprunt effectuerEmprunt(@PathVariable long id_user,@RequestBody List<Document> documents) throws Exception {
+		User user = new User(); 
+		user.setId(id_user); 
+		return iMediatheque.effectuerEmprunt(user, documents);
+	}
+
+	@DeleteMapping("/Restitution/{id_Emprunt}")
+	public void restituerEmprunt(@PathVariable long  id_Emprunt) throws Exception {
+		Emprunt emprunt = new Emprunt(); 
+		iMediatheque.restituerEmprunt(emprunt);
+	} 
+	
+	// Visualiser les emprunts d'un utilisateur
+	@GetMapping("/UserEmprunt/{id}")
+	public List<Emprunt> findAllEmpruntByUser(@PathVariable Long id) throws UserNotFountException {
+		userRepository.findById(id).orElseThrow(() -> new UserNotFountException()); 
+		
+		return empruntRepository.findEmpruntsByUserID(id);  
+	
+	
+	}
+
+}
