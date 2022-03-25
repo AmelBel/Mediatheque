@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.project.controller.UserNotFountException;
 import org.project.model.Document;
 import org.project.model.Emprunt;
 import org.project.model.User;
@@ -18,75 +19,75 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class MediathequeServiceImplement implements IMediatheque {
 	@Autowired
-	private DocumentRepository documentRepository; 
+	private DocumentRepository documentRepository;
 
 	@Autowired
-	private EmpruntRepository empruntRepository; 
-	
+	private EmpruntRepository empruntRepository;
+
 	@Autowired
-	private UserRepository userRepository; 
-
-	
+	private UserRepository userRepository;
 
 	@Override
-	public Emprunt effectuerEmprunt (User user, List<Document> documents) throws Exception {
-		
-	        List<Document> documentEmprunt = new ArrayList<>();
-	        
-	        for (Document document : documents) {
-	        	
-	            Document dr = documentRepository.findById(document.getId()).orElseThrow(() -> new Exception());
-	            if (dr.getNombreExemplaire() == 0) {
-	                throw new Exception();
-	            }
-	            dr.setNombreExemplaire(dr.getNombreExemplaire()-1);
-	            documentEmprunt.add(dr);
-	        }
-	 
-	            Emprunt emprunt = new Emprunt(); 
-	            emprunt.setDateEmprunt(new Date());
-	            emprunt.setDateRetour(new Date(new Date().getTime() +  (1000 * 60 * 60 * 24 * 7)));
-	            emprunt.setDocuments(documentEmprunt);
-	            emprunt.setUser(user);
-	        
-	         
-	            if(user.getEmprunts().size() < 3) {
-	                empruntRepository.save(emprunt);
-	            } else {
-	                throw new Exception();
-	            }
-	            for ( Document document : documentEmprunt ) {
-	               documentRepository.save(document);
-	            }	        
-	        return emprunt;
-	    }
-		
-		
+	public Emprunt effectuerEmprunt(User user, List<Document> documents) throws Exception {
+
+		List<Document> documentEmprunt = new ArrayList<>();
+
+		for (Document document : documents) {
+
+			Document dr = documentRepository.findById(document.getId()).orElseThrow(() -> new Exception());
+			if (dr.getNombreExemplaire() == 0) {
+				throw new Exception();
+			}
+			dr.setNombreExemplaire(dr.getNombreExemplaire() - 1);
+			documentEmprunt.add(dr);
+		}
+		user = userRepository.findById(user.getId()).orElseThrow(() -> new UserNotFountException());
+		int nbDocuments = 0;
+		for ( Emprunt emprunt : user.getEmprunts() ) {
+			nbDocuments += emprunt.getDocuments().size();
+		}
+		if (nbDocuments + documents.size() > 3) {
+			throw new Exception();
+		}
+		Emprunt emprunt = new Emprunt();
+		emprunt.setDateEmprunt(new Date());
+		emprunt.setDateRetour(new Date(new Date().getTime() + (1000 * 60 * 60 * 24 * 7)));
+		emprunt.setDocuments(documentEmprunt);
+		emprunt.setUser(user);
+
+		empruntRepository.save(emprunt);
+
+		for (Document document : documentEmprunt) {
+			documentRepository.save(document);
+		}
+		return emprunt;
+	}
 
 	@Override
-	public void restituerEmprunt(User user, Emprunt emprunt) throws Exception {
-	
-		List<Document> documentEmprunt = emprunt.getDocuments(); 
+	public void restituerEmprunt(Emprunt emprunt) throws Exception {
+
+		emprunt = empruntRepository.findById(emprunt.getNumero()).orElseThrow();
+		List<Document> documentEmprunt = emprunt.getDocuments();
 
 		emprunt.setDateRetour(new Date());
-		
+
 //		Date dateEmpr = emprunt.getDateEmprunt(); 
 //		Date dateRe = emprunt.getDateRetour(); 
 //		long dureeEmprunt = dateRe.getTime() - dateEmpr.getTime(); 
 //		dureeEmprunt / 1000 * 60 * 60 * 24 * 7; 
 //		
-		
-		for (Document doc: documentEmprunt) {
-			
+
+		for (Document doc : documentEmprunt) {
+
 			Document dr = documentRepository.findById(doc.getId()).orElseThrow(() -> new Exception());
 			dr.setNombreExemplaire(dr.getNombreExemplaire() + 1);
-			
+			documentRepository.save(dr);
+
 		}
-		documentEmprunt.clear();
-		emprunt.setDocuments(documentEmprunt);
+//		documentEmprunt.clear();
+//		emprunt.setDocuments(documentEmprunt);
 		empruntRepository.deleteById(emprunt.getNumero());
-		
-					
+
 	}
 
 //	@Override

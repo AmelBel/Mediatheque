@@ -11,22 +11,30 @@ import org.junit.jupiter.api.Test;
 import org.project.model.Document;
 import org.project.model.Emprunt;
 import org.project.model.User;
+import org.project.repository.DocumentRepository;
+import org.project.repository.EmpruntRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 public class MediathequeServiceTest {
 
-
 	@Autowired
 	IMediatheque mediathequeService;
 
+	@Autowired
+	EmpruntRepository empruntRepository;
+	
+	@Autowired
+	DocumentRepository documentRepository;
 
 	@Test
+	@Transactional
 	public void whenAllIsOkEmpruntIsCreated() throws Exception {
 
 		User user2 = new User();
-		user2.setId(1l);
+		user2.setId(2l);
 
 		List<Document> docs = new ArrayList<>();
 		Document doc1 = new Document();
@@ -43,6 +51,7 @@ public class MediathequeServiceTest {
 	}
 
 	@Test
+	@Transactional
 	public void whenQuotaExceedThrowException() {
 		User user1 = new User();
 		user1.setId(1l);
@@ -57,36 +66,25 @@ public class MediathequeServiceTest {
 
 		try {
 			Emprunt emprunt = mediathequeService.effectuerEmprunt(user1, docs);
-			fail();
+			fail("Exception not thrown");
 		} catch (Exception e) {
 			System.out.println("OK");
 		}
 	}
-		
-	
+
 	@Test 
+	@Transactional
 	public void whenEmpruntIsRestored() throws Exception {
 		
-		User user3 = new User();
-		user3.setId(3l);
 
-		List<Document> docs = new ArrayList<>();
-		Document doc1 = new Document();
-		doc1.setId(6l);
-		docs.add(doc1);
+		Emprunt emprunt = new Emprunt();
+		emprunt.setNumero(1l);
 		
-		Emprunt emprunt = mediathequeService.effectuerEmprunt(user3, docs);
+		mediathequeService.restituerEmprunt(emprunt);
 		
-		assertTrue(emprunt.getDocuments().size() == 1); 
-		
-		mediathequeService.restituerEmprunt(user3, emprunt);
-		
-		assertTrue(emprunt.getDocuments().size() == 0);
+		assertTrue(empruntRepository.findAll().size() == 0);
+		assertTrue(documentRepository.findById(4l).get().getNombreExemplaire() == 81);
 		
 	}
-
-
-
-	
 
 }
