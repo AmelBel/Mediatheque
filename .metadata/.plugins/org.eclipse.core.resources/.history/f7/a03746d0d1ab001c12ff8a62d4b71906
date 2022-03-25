@@ -1,0 +1,29 @@
+package org.project.controller;
+
+import java.util.List;
+
+import org.project.model.Document;
+import org.project.model.Emprunt;
+import org.project.model.User;
+import org.project.service.IMediatheque;
+import org.project.service.MediathequeServiceImplement;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/mediatheque")
+public class EmpruntRestController {
+	
+	private IMediatheque iMediatheque;
+
+	@Re
+	public Emprunt effectuerEmprunt(User user, List<Document> documents) throws Exception {
+		return iMediatheque.effectuerEmprunt(user, documents);
+	}
+
+	public void restituerEmprunt(User user, Emprunt emprunt) throws Exception {
+		iMediatheque.restituerEmprunt(user, emprunt);
+	} 
+	
+
+}

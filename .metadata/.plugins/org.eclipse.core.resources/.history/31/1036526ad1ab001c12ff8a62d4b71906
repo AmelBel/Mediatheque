@@ -1,0 +1,12 @@
+package org.project.controller;
+
+import org.project.service.IMediatheque;
+import org.project.service.MediathequeServiceImplement;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class EmpruntRestController {
+	
+	private IMediatheque iMediatheque;  
+
+}

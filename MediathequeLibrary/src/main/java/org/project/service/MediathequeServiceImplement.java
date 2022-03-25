@@ -66,8 +66,14 @@ public class MediathequeServiceImplement implements IMediatheque {
 	public void restituerEmprunt(User user, Emprunt emprunt) throws Exception {
 	
 		List<Document> documentEmprunt = emprunt.getDocuments(); 
-		
+
 		emprunt.setDateRetour(new Date());
+		
+//		Date dateEmpr = emprunt.getDateEmprunt(); 
+//		Date dateRe = emprunt.getDateRetour(); 
+//		long dureeEmprunt = dateRe.getTime() - dateEmpr.getTime(); 
+//		dureeEmprunt / 1000 * 60 * 60 * 24 * 7; 
+//		
 		
 		for (Document doc: documentEmprunt) {
 			
