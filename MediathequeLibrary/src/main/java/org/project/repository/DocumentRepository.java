@@ -19,11 +19,11 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
 	
 	
 //   Permettre de voir les nouveautés, uniquement les CD
-//	@Query("select * from cd where CURRENT_TIMESTAMP- cd.dataCreation < 7" )
-//	public List<CD> findByNewDateCreation (); 
+//	@Query("select * from cd where current_Date.getTime() - cd.dateParution.getTime() < 30" )
+//	public List<CD> findByRecenteDateParution(); 
 	
 	//afficher les documents dont le titre contenant une chaîne particulière
-	public Optional<Document> findBytitreContainingIgnoreCase(String chaineTitre); 
+	public List<Document> findAllBytitreContainingIgnoreCase(String chaineTitre); 
 	
 	
 	

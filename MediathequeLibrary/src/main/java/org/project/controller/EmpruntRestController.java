@@ -5,11 +5,16 @@ import java.util.List;
 import org.project.model.Document;
 import org.project.model.Emprunt;
 import org.project.model.User;
+import org.project.repository.EmpruntRepository;
+import org.project.repository.UserRepository;
 import org.project.service.IMediatheque;
 import org.project.service.MediathequeServiceImplement;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,16 +24,28 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmpruntRestController {
 	
 	private IMediatheque iMediatheque;
+	private EmpruntRepository empruntRepository;
+	private UserRepository userRepository;
+	
 
-	@PutMapping("/Emprunter")
-	public Emprunt effectuerEmprunt(@RequestParam User user,@RequestParam List<Document> documents) throws Exception {
+	@PostMapping("/Emprunter")
+	public Emprunt effectuerEmprunt(@RequestBody User user,@RequestBody List<Document> documents) throws Exception {
 		return iMediatheque.effectuerEmprunt(user, documents);
 	}
 
 	@DeleteMapping("/Restituer")
-	public void restituerEmprunt(@RequestParam User user,@RequestParam Emprunt emprunt) throws Exception {
+	public void restituerEmprunt(@RequestBody User user,@RequestBody Emprunt emprunt) throws Exception {
 		iMediatheque.restituerEmprunt(user, emprunt);
 	} 
 	
+	// Visualiser les emprunts d'un utilisateur
+	@GetMapping("/UserEmprunt/{id}")
+	public List<Emprunt> findAllEmpruntByUser(@PathVariable Long id) throws UserNotFountException {
+		userRepository.findById(id).orElseThrow(() -> new UserNotFountException()); 
+		
+		return empruntRepository.findEmpruntsByUserID(id);  
+	
+	
+	}
 
 }

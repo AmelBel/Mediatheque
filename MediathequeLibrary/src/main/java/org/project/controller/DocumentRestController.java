@@ -63,28 +63,37 @@ public class DocumentRestController {
 	}
 
 
-	@GetMapping("/NouveauteCD")
-	public List<CD> findByNewDateCreation () {
-
-		return cdRepository.findAll(); 
-	}
+//	@GetMapping("/NouveauteCD")
+//	public List<CD> findCDByNewDateCreation () {
+//
+//		return cdRepository.findByRecenteDateParution(); 
+//	}
 
 	//afficher les documents dont le titre contenant une chaîne particulière
 	// pour tester sur le navigateur : http://localhost:8080/mediatheque/catalogue/search?q=ga, ga c'est la chaine recherché!
 	@GetMapping("/search")
-	public Optional<Document>  searchDocumentByString(@RequestParam String q) {
-
-		return documentRepository.findBytitreContainingIgnoreCase(q); 
+	public List<Document>  searchDocumentByString(@RequestParam String q) {
+		return documentRepository.findAllBytitreContainingIgnoreCase(q); 
 	}
 
+//	// ajouter un nouveau document
+//	@PostMapping
+//	public ResponseEntity<Void> addDocumentToCatalogue(@RequestBody Document document) {
+//
+//		documentRepository.save(document); 
+//		document.setDateCreation(new Date());
+//		return new ResponseEntity<>(HttpStatus.CREATED);
+//	}
+
+	
 	// ajouter un nouveau document
-	@PostMapping
-	public ResponseEntity<Void> addDocumentToCatalogue(@RequestBody Document document) {
+		@PostMapping
+		public Document addDocumentToCatalogue(@RequestBody Document document) {
 
-		documentRepository.save(document); 
-		document.setDateCreation(new Date());
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT); 
-	}
+			documentRepository.save(document); 
+			document.setDateCreation(new Date());
+			return document; 
+		}
 
 
 

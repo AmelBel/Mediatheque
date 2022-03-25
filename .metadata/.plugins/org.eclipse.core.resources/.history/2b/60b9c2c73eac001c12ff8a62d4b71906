@@ -1,0 +1,49 @@
+package org.project.controller;
+
+import java.util.List;
+
+import org.project.model.Document;
+import org.project.model.Emprunt;
+import org.project.model.User;
+import org.project.repository.EmpruntRepository;
+import org.project.service.IMediatheque;
+import org.project.service.MediathequeServiceImplement;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/mediatheque")
+public class EmpruntRestController {
+	
+	private IMediatheque iMediatheque;
+	private EmpruntRepository empruntRepository; 
+	
+
+	@PostMapping("/Emprunter")
+	public Emprunt effectuerEmprunt(@RequestBody User user,@RequestBody List<Document> documents) throws Exception {
+		return iMediatheque.effectuerEmprunt(user, documents);
+	}
+
+	@DeleteMapping("/Restituer")
+	public void restituerEmprunt(@RequestBody User user,@RequestBody Emprunt emprunt) throws Exception {
+		iMediatheque.restituerEmprunt(user, emprunt);
+	} 
+	
+	// Visualiser les emprunts d'un utilisateur
+	@GetMapping("/UserEmprunt/{id}")
+	public List<Emprunt> findAllEmprunt(@PathVariable Long id) {
+		
+		return 
+	}
+	
+	
+	
+
+}

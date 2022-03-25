@@ -45,6 +45,7 @@ public class MediathequeServiceImplement implements IMediatheque {
 	 
 	            Emprunt emprunt = new Emprunt(); 
 	            emprunt.setDateEmprunt(new Date());
+	            emprunt.setDateRetour(new Date(new Date().getTime() +  (1000 * 60 * 60 * 24 * 7)));
 	            emprunt.setDocuments(documentEmprunt);
 	            emprunt.setUser(user);
 	        
@@ -83,7 +84,8 @@ public class MediathequeServiceImplement implements IMediatheque {
 		}
 		documentEmprunt.clear();
 		emprunt.setDocuments(documentEmprunt);
-		emprunt.setUser(null);
+		empruntRepository.deleteById(emprunt.getNumero());
+		
 					
 	}
 
