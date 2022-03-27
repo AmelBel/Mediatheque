@@ -1,0 +1,28 @@
+package org.project.model;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.NotNull;
+
+import org.project.controller.UsersViews;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import lombok.Data;
+
+@Entity
+@Data
+public class DVD extends Document {
+
+	@JsonView(UsersViews.OneUser.class)
+	private String realisateur; 
+	
+	@NotNull
+	@JsonView(UsersViews.OneUser.class)
+	private int duree; 
+	
+	@Enumerated(EnumType.STRING)
+	@JsonView(UsersViews.OneUser.class)
+	private TypeDVD type;
+}

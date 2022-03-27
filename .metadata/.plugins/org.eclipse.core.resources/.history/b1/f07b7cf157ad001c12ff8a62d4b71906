@@ -1,0 +1,5 @@
+package org.project.handlerException;
+
+public class EmpruntNotFoundException extends Exception {
+
+}

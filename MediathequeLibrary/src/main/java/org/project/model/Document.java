@@ -13,9 +13,11 @@ import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.project.controller.EmpruntViews;
 import org.project.controller.UsersViews;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Data;
@@ -23,6 +25,13 @@ import lombok.Data;
 @Entity
 @Data
 @Inheritance(strategy=InheritanceType.JOINED) 
+
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="type")
+@JsonSubTypes({
+	@Type(name="CD", value=CD.class),
+	@Type(name="DVD", value=DVD.class),
+	@Type(name="LIVRE", value=Livre.class),
+})
 public class Document implements Serializable {
 	
 	/**

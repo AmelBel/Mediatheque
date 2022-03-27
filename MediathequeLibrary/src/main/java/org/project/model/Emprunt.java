@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.project.controller.EmpruntViews;
-import org.project.controller.EmpruntViews.AllEmprunts;
 import org.project.controller.UsersViews;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -46,7 +45,7 @@ public class Emprunt implements Serializable {
 	private User user; 
 	
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
-	@JsonView(EmpruntViews.OneEmprunt.class)
+	@JsonView(EmpruntViews.OneEmprunt.class)	
 	private List<Document> documents;
 
 	

@@ -58,9 +58,9 @@ public class MediathequeServiceTest {
 
 		List<Document> docs = new ArrayList<>();
 		Document doc1 = new Document();
-		doc1.setId(1l);
+		doc1.setId(4l);
 		Document doc2 = new Document();
-		doc2.setId(2l);
+		doc2.setId(5l);
 		docs.add(doc1);
 		docs.add(doc2);
 
@@ -76,14 +76,15 @@ public class MediathequeServiceTest {
 	@Transactional
 	public void whenEmpruntIsRestored() throws Exception {
 		
-
 		Emprunt emprunt = new Emprunt();
 		emprunt.setNumero(1l);
 		
 		mediathequeService.restituerEmprunt(emprunt);
 		
 		assertTrue(empruntRepository.findAll().size() == 0);
-		assertTrue(documentRepository.findById(4l).get().getNombreExemplaire() == 81);
+		//System.out.println("******************************" + documentRepository.findById(3l).get().getNombreExemplaire()); 
+		
+		assertTrue(documentRepository.findById(3l).get().getNombreExemplaire() == 61); 
 		
 	}
 

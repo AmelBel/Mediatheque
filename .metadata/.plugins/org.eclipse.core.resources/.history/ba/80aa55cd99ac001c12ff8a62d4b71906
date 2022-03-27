@@ -1,0 +1,5 @@
+package org.project.restController;
+
+public class DocumentRestControllerTest {
+
+}

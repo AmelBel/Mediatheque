@@ -3,6 +3,7 @@ package org.project.controller;
 
 import java.util.List;
 
+import org.project.handlerException.UserNotFoundException;
 import org.project.model.Emprunt;
 import org.project.model.User;
 import org.project.repository.EmpruntRepository;
@@ -26,7 +27,7 @@ public class UserRestController {
 
 	@Autowired
 	private UserRepository userRepository; 
-	
+
 	@Autowired
 	private EmpruntRepository empruntRepository; 
 
@@ -38,34 +39,35 @@ public class UserRestController {
 
 	@GetMapping("/{id_user}")
 	@JsonView(UsersViews.OneUser.class)
-	public User findOne(@PathVariable Long id_user) throws UserNotFountException {
-		return userRepository.fullLoad(id_user).orElseThrow(() -> new UserNotFountException()); 
+	public User findOne(@PathVariable Long id_user) throws UserNotFoundException {
+		return userRepository.fullLoad(id_user).orElseThrow(() -> new UserNotFoundException()); 
 	}
 
 	//Créer un user
 	@PostMapping
 	@JsonView(UsersViews.OneUser.class)
-	public ResponseEntity<User> saveUser(@RequestBody User user) {		
+	public ResponseEntity<User> createUser(@RequestBody User user) {		
 		user = userRepository.save(user);
 		return new ResponseEntity<User>(user, HttpStatus.CREATED); 
 	} 
 
-	//Mettre à jour d'un user
+	//Mettre à jour un user
 	@PutMapping
 	@JsonView(UsersViews.OneUser.class)
-	public User upDateUser(@RequestBody User user) throws UserNotFountException {
-		userRepository.findById(user.getId()).orElseThrow(() -> new UserNotFountException());
+	public User upDateUser(@RequestBody User user) throws UserNotFoundException {
+		userRepository.findById(user.getId()).orElseThrow(() -> new UserNotFoundException());
+		
 		userRepository.save(user); 
 		return user;
 	}
-	
-	
+
+
 	// Visualiser les emprunts d'un utilisateur
-		@GetMapping("/{id_user}/Emprunts")
-		@JsonView(UsersViews.OneUser.class)
-		public List<Emprunt> findAllEmpruntByUserId(@PathVariable Long id_user) throws UserNotFountException {
-			userRepository.findById(id_user).orElseThrow(() -> new UserNotFountException()); 
-			return empruntRepository.findAllEmpruntByUserId(id_user); 		
-		}
-	
+	@GetMapping("/{id_user}/Emprunts")
+	@JsonView(UsersViews.OneUser.class)
+	public List<Emprunt> findAllEmpruntByUserId(@PathVariable Long id_user) throws UserNotFoundException {
+		userRepository.findById(id_user).orElseThrow(() -> new UserNotFoundException()); 
+		return empruntRepository.findAllEmpruntByUserId(id_user); 		
+	}
+
 }

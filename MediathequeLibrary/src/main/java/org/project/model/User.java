@@ -1,7 +1,6 @@
 package org.project.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,10 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-import org.project.controller.EmpruntViews;
 import org.project.controller.UsersViews;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Data;
@@ -27,6 +24,11 @@ import lombok.Data;
 
 public class User implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(UsersViews.AllUsers.class)

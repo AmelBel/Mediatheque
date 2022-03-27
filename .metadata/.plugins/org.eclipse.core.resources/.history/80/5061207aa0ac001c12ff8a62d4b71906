@@ -1,0 +1,6 @@
+package org.project.handlerException;
+
+public class QuotaExceetException extends Exception {
+	
+
+}

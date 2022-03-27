@@ -1,14 +1,10 @@
 package org.project.repository;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
 import org.project.model.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,21 +18,21 @@ public class DocumentRepositoryTest {
 	
 	
 	
+//	@Test 
+//	void testByContainingTitreIgnoringCase() {
+//		
+//		Optional<Document> found = documentRepository.findAllByTitreContainingIgnoreCase("DOCUMENT1"); 
+//		
+//		assertTrue(found.isPresent());
+//		
+//		Optional<Document> notFound = documentRepository.findAllByTitreContainingIgnoreCase("notfound"); 
+//		
+//		assertTrue(!notFound.isPresent());
+//				
+//	}
+//	
 	@Test 
-	void testByContainingTitreIgnoringCase() {
-		
-		Optional<Document> found = documentRepository.findAllBytitreContainingIgnoreCase("Formidable"); 
-		
-		assertTrue(found.isPresent());
-		
-		Optional<Document> notFound = documentRepository.findAllBytitreContainingIgnoreCase("notfound"); 
-		
-		assertTrue(!notFound.isPresent());
-				
-	}
-	
-	@Test 
-	void testaddDocument () {
+	void testAddDocument () {
 		
 		long intialDocumentCount = documentRepository.count(); 
 		

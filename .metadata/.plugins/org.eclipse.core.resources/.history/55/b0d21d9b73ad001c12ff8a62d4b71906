@@ -1,0 +1,16 @@
+package org.project.repository;
+
+import java.util.List;
+
+import org.project.model.CD;
+import org.project.model.Document;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CDRepository extends JpaRepository<CD, Long> {
+
+	
+//  Visualiser les nouveautés, uniquement les CD
+	@Query("select * from cd where current_Date.getTime() - cd.dateParution.getTime() < 30" )
+	public List<Document> findByRecenteDateParution(); 
+	
+}

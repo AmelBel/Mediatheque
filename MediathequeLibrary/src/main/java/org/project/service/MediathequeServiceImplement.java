@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.project.controller.UserNotFountException;
+import org.project.handlerException.DocumentNotFoundException;
+import org.project.handlerException.EmpruntNotFoundException;
+import org.project.handlerException.QuotaExceetException;
+import org.project.handlerException.ResourceNotAvalaibleException;
+import org.project.handlerException.UserNotFoundException;
 import org.project.model.Document;
 import org.project.model.Emprunt;
 import org.project.model.User;
@@ -34,20 +38,20 @@ public class MediathequeServiceImplement implements IMediatheque {
 
 		for (Document document : documents) {
 
-			Document dr = documentRepository.findById(document.getId()).orElseThrow(() -> new Exception());
+			Document dr = documentRepository.findById(document.getId()).orElseThrow(() -> new DocumentNotFoundException()); 
 			if (dr.getNombreExemplaire() == 0) {
-				throw new Exception();
+				throw new ResourceNotAvalaibleException(); 
 			}
 			dr.setNombreExemplaire(dr.getNombreExemplaire() - 1);
 			documentEmprunt.add(dr);
 		}
-		user = userRepository.findById(user.getId()).orElseThrow(() -> new UserNotFountException());
+		user = userRepository.findById(user.getId()).orElseThrow(() -> new UserNotFoundException()); 
 		int nbDocuments = 0;
 		for ( Emprunt emprunt : user.getEmprunts() ) {
 			nbDocuments += emprunt.getDocuments().size();
 		}
 		if (nbDocuments + documents.size() > 3) {
-			throw new Exception();
+			throw new QuotaExceetException ();
 		}
 		Emprunt emprunt = new Emprunt();
 		emprunt.setDateEmprunt(new Date());
@@ -66,13 +70,11 @@ public class MediathequeServiceImplement implements IMediatheque {
 	@Override
 	public void restituerEmprunt(Emprunt emprunt) throws Exception {
 
-		emprunt = empruntRepository.findById(emprunt.getNumero()).orElseThrow();
+		emprunt = empruntRepository.findById(emprunt.getNumero()).orElseThrow(() -> new EmpruntNotFoundException());
 		List<Document> documentEmprunt = emprunt.getDocuments();
-
 		emprunt.setDateRetour(new Date());
-
 		for (Document doc : documentEmprunt) {
-			Document dr = documentRepository.findById(doc.getId()).orElseThrow(() -> new Exception());
+			Document dr = documentRepository.findById(doc.getId()).orElseThrow(() -> new DocumentNotFoundException()); 
 			dr.setNombreExemplaire(dr.getNombreExemplaire() + 1);
 			documentRepository.save(dr);
 		}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun whenEmpruntIsRestored()" project="MediathequeLibrary" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="org.project.service.MediathequeServiceTest" time="0.704" displayname="MediathequeServiceTest" uniqueid="[engine:junit-jupiter]/[class:org.project.service.MediathequeServiceTest]">
+    <testcase name="whenEmpruntIsRestored" classname="org.project.service.MediathequeServiceTest" time="0.704" displayname="whenEmpruntIsRestored()" uniqueid="[engine:junit-jupiter]/[class:org.project.service.MediathequeServiceTest]/[method:whenEmpruntIsRestored()]"/>
+  </testsuite>
+</testrun>

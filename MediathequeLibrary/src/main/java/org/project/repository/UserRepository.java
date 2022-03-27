@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 
-//	CRUD sur users et documents dèja surchargé en JPARepository
+//	CRUD sur usersdèja surchargé en JPARepository
 	
 	
 //	Trouver un user pour un login et un mot de passe donné
