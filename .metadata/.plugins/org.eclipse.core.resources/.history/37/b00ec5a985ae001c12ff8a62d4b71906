@@ -1,0 +1,54 @@
+spring:
+  jackson:
+    mapper:
+      default-view-inclusion: false
+  jpa:
+    show-sql: true
+
+#Désactiver le pattern « Open Session in View »
+    open-in-view: false
+ 
+#Activer les traces de debug pour la sécurité 
+logging:
+  level:
+    '[org.springframework.security]': debug
+---
+spring:
+  config:
+    activate:
+      on-profile:
+      - prod
+      
+   
+   
+  datasource:
+    url: jdbc:postgresql:members_documents
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      
+      
+      
+      spring: #profil par défaut
+jackson:
+mapper:
+default-view-inclusion : false
+
+
+
+sql:
+init:
+mode: always #pour prendre le data.sql
+jpa:
+show-sql: true # configaration Hibernate afin qu'il montre les instruction SQL executées
+hibernate:
+ddl-auto: create-drop
+defer-datasource-initialization: true #pour prendre le data.sql
+
+datasource:
+url: jdbc:postgresql:media #nom de ma base est "mediatheque"
+username: postgres
+password: postgres

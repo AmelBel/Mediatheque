@@ -1,0 +1,28 @@
+spring:
+  jackson:
+    mapper:
+      default-view-inclusion: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+
+#Désactiver le pattern « Open Session in View »
+    open-in-view: false
+
+ 
+#Activer les traces de debug pour la sécurité 
+logging:
+  level:
+   '[org.springframework.security]': debug
+   
+   
+  datasource:
+    url: jdbc:postgresql:mediatheque
+    username: postgres
+    password: postgres
+
+ 
+    
+ 

@@ -6,9 +6,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -39,16 +42,19 @@ public class Emprunt implements Serializable {
 	@JsonView(UsersViews.OneUser.class)
 	private Date dateRetour; 
 	
-	
+
+
+
+	//@ManyToOne(fetch = FetchType.LAZY)
 	@ManyToOne
+	@JoinColumn(name="user_id")
 	@JsonIgnore
 	private User user; 
 	
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
+	@ManyToMany
+	@JoinColumn(name="documents_id")
 	@JsonView(EmpruntViews.OneEmprunt.class)	
 	private List<Document> documents;
-
-	
 
 
 	

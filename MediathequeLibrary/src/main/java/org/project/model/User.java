@@ -2,6 +2,7 @@ package org.project.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,14 +15,13 @@ import javax.validation.constraints.NotNull;
 
 import org.project.controller.UsersViews;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Data;
 
 @Entity
 @Data
-
-
 public class User implements Serializable {
 	
 	/**
@@ -42,11 +42,14 @@ public class User implements Serializable {
 	private String nom; 
 	@JsonView(UsersViews.AllUsers.class)
 	private String prenom;
-	
+
+
 	
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true, mappedBy = "user")// Merge: il traite que les mises à jours
+	//@OneToMany(mappedBy = "user")
 	@JsonView(UsersViews.OneUser.class)
 	private Set<Emprunt> emprunts = new HashSet<Emprunt>();
+	//	private List<Emprunt> emprunts = new ArrayList<Emprunt>();
 	
 	
 	@Override

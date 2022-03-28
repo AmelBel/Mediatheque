@@ -20,11 +20,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 .anyRequest().authenticated()
 		 .and()
 		 .formLogin() // Page de login
-		 .permitAll()
+		 .permitAll() // à supperimer
 		 .and()
 		 .logout()
 		 .logoutUrl("/logout")
-		 .invalidateHttpSession(true);
+		.logoutSuccessUrl("/mediathèque/users");
+	//	 .invalidateHttpSession(true);
 		 
 	}
 

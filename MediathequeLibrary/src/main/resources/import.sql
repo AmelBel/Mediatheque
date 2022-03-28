@@ -25,10 +25,10 @@ insert into dvd(id, realisateur, duree, type) values (5, 'DVD1', 80, 'BLUE_RAY')
 insert into dvd(id, realisateur, duree, type) values (6, 'DVD2', 200, 'NORMAL');
 
 
-insert into emprunt (numero, date_emprunt, date_retour, user_id) values (1, '2020-01-01', '2020-01-08', 1); 
+-- insert into emprunt (numero, date_emprunt, date_retour, user_id) values (1, '2020-01-01', '2020-01-08', 1); 
 
-insert into emprunt_documents (emprunt_numero, documents_id) values (1, 1); 
-insert into emprunt_documents (emprunt_numero, documents_id) values (1, 3); 
+-- insert into emprunt_documents (emprunt_numero, documents_id) values (1, 1); 
+-- insert into emprunt_documents (emprunt_numero, documents_id) values (1, 3); 
 
 
  

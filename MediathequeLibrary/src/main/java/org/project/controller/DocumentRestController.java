@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.project.model.Document;
 import org.project.repository.CDRepository;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/mediatheque/catalogue")
+@RequestMapping("/mediatheque/documents")
 public class DocumentRestController {
 
 	@Autowired
@@ -48,10 +49,10 @@ public class DocumentRestController {
 	//		
 	//	}
 	@GetMapping
-	public ResponseEntity<List<Document>> getDocuments(@RequestParam(required = false) String titre, @RequestParam (required = false) String sDateParution, @RequestParam (required = false) String typeDocument) throws ParseException {
+	public ResponseEntity<List<Document>> getDocuments(@RequestParam(required = false) String titre, @RequestParam (required = false) Date dateParution, @RequestParam (required = false) String typeDocument) throws ParseException {
 		
-		Date dateParution = new SimpleDateFormat("dd-MM-yyyy").parse(sDateParution);
-		System.out.println("DATE : "+dateParution);
+//		Date dateParution = new SimpleDateFormat("dd-MM-yyyy").parse(sDateParution);
+//		System.out.println("DATE : "+ dateParution);
 		try {
 			List<Document> documents = new java.util.ArrayList<>();
 			if (dateParution == null) {
@@ -84,14 +85,18 @@ public class DocumentRestController {
 		}
 	}
 
-//  Visualiser les nouveautés, uniquement les CD
+////  Visualiser les nouveautés, uniquement les CD
 //	@GetMapping("/NouveauCD")
 //	public ResponseEntity<List<Document>> findAllNewCD () {
+//		Date date = new Date(); 
+//		
+//		date.setMonth(date.getMonth()-1); 
+//		
 //		try {
 //			List<Document> documents = new java.util.ArrayList<>();
-//			cdRepository.findByRecentDateParution().forEach(documents::add); 
+//			documentRepository.findByRecentDateParution().forEach(documents::add); 
 //			
-//			cdRepository.find
+//	
 //			return new ResponseEntity<>(documents, HttpStatus.OK);
 //		}
 //		catch (Exception e) {

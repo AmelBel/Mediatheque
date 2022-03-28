@@ -25,4 +25,3 @@ logging:
   jpa:
     hibernate:
       ddl-auto: update
-   

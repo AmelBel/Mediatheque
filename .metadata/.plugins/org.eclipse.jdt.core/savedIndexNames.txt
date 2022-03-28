@@ -46,7 +46,6 @@ INDEX VERSION 1.131+C:\MediathequeLibrary\.metadata\.plugins\org.eclipse.jdt.cor
 3190896850.index
 2230716478.index
 3236556610.index
-2877583604.index
 1592167317.index
 3164702240.index
 3107017961.index

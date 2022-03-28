@@ -29,14 +29,14 @@ public class EmpruntRestController {
 	private UserRepository userRepository;
 	
 
-	@PostMapping("/Emprunt/{id_user}")
+	@PostMapping("/emprunts/{id_user}")
 	public Emprunt effectuerEmprunt(@PathVariable Long id_user,@RequestBody List<Document> documents) throws Exception {
 		User user = userRepository.findById(id_user).orElseThrow(() -> new UserNotFoundException());
 		user.setId(id_user); 
 		return iMediatheque.effectuerEmprunt(user, documents);
 	}
 
-	@DeleteMapping("/Emprunt/{id_Emprunt}")
+	@DeleteMapping("/emprunts/{id_Emprunt}")
 	public void restituerEmprunt(@PathVariable Long  id_Emprunt) throws Exception {
 		Emprunt emprunt = empruntRepository.findById(id_Emprunt).orElseThrow(() -> new EmpruntNotFoundException ()); 
 		emprunt.setNumero(id_Emprunt); 

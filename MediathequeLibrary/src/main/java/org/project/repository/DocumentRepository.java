@@ -3,11 +3,14 @@ package org.project.repository;
 import java.util.Date;
 import java.util.List;
 
+import org.project.model.CD;
 import org.project.model.Document;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 
-
+@Repository
 public interface DocumentRepository extends JpaRepository<Document, Long> {
 	
 	
@@ -20,7 +23,11 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
 	public List<Document> findAllByTitreContainingIgnoreCase(String chaineTitre); 
 
 	//afficher les documents par date parution
-	public List<Document> findAllByDateParution(Date dateParution); 
+	public List<Document> findAllByDateParution(Date dateParution);
+	
+	//  Visualiser les nouveautés, uniquement les CD
+//	@Query("select d from document d where d.dateParution> ?1")
+//	public List<Document> findByRecentDateParution(Date date); 
 
 	
 

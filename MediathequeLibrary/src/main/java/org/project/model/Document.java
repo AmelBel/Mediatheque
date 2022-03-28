@@ -2,17 +2,24 @@ package org.project.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.ManyToAny;
 import org.project.controller.UsersViews;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -55,6 +62,11 @@ public class Document implements Serializable {
 	@JsonView(UsersViews.OneUser.class)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date dateParution; 
+	
+	//@ManyToMany(mappedBy="documents", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy="documents") 
+	private Set<Emprunt> emprunts = new HashSet<Emprunt>();
+	
 	
 	
 	@PrePersist
