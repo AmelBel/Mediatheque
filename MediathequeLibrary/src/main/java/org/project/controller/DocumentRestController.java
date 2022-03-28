@@ -1,5 +1,7 @@
 package org.project.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -46,7 +48,10 @@ public class DocumentRestController {
 	//		
 	//	}
 	@GetMapping
-	public ResponseEntity<List<Document>> getDocuments(@RequestParam(required = false) String titre, @RequestParam (required = false) Date dateParution, @RequestParam (required = false) String typeDocument) {
+	public ResponseEntity<List<Document>> getDocuments(@RequestParam(required = false) String titre, @RequestParam (required = false) String sDateParution, @RequestParam (required = false) String typeDocument) throws ParseException {
+		
+		Date dateParution = new SimpleDateFormat("dd-MM-yyyy").parse(sDateParution);
+		System.out.println("DATE : "+dateParution);
 		try {
 			List<Document> documents = new java.util.ArrayList<>();
 			if (dateParution == null) {

@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 
 import org.project.controller.UsersViews;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -52,6 +53,7 @@ public class Document implements Serializable {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonView(UsersViews.OneUser.class)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date dateParution; 
 	
 	

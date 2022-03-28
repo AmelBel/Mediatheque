@@ -17,9 +17,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 		 .csrf().disable()
 		 .authorizeRequests() // ACLs
-		 .antMatchers("/swagger-ui.html","/swagger-ui/*","/v3/api-docs/**").permitAll()
-		 .antMatchers(HttpMethod.GET).authenticated()
-		 .antMatchers("/Mediatheque/**").hasRole("admin")
+		 .anyRequest().authenticated()
 		 .and()
 		 .formLogin() // Page de login
 		 .permitAll()
