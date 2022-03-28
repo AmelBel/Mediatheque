@@ -35,12 +35,12 @@ import lombok.Data;
 @Data
 @Inheritance(strategy=InheritanceType.JOINED) 
 
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="type")
-@JsonSubTypes({
-	@Type(name="CD", value=CD.class),
-	@Type(name="DVD", value=DVD.class),
-	@Type(name="LIVRE", value=Livre.class),
-})
+//@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="type")
+//@JsonSubTypes({
+//	@Type(name="CD", value=CD.class),
+//	@Type(name="DVD", value=DVD.class),
+//	@Type(name="LIVRE", value=Livre.class),
+//})
 public class Document implements Serializable {
 	
 	/**

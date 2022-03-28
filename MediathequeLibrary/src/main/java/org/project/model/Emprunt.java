@@ -53,6 +53,7 @@ public class Emprunt implements Serializable {
 	@ManyToMany
 	@JoinColumn(name="documents_id")
 	@JsonView(EmpruntViews.OneEmprunt.class)	
+	//@JsonIgnore
 	private List<Document> documents;
 
 

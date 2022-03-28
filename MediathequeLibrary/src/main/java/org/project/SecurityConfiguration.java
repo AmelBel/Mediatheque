@@ -17,15 +17,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 		 .csrf().disable()
 		 .authorizeRequests() // ACLs
+		 .antMatchers(HttpMethod.GET,"/documents/**").permitAll()
+		 .antMatchers("/emprunt/**").authenticated()
 		 .anyRequest().authenticated()
 		 .and()
-		 .formLogin() // Page de login
-		 .permitAll() // à supperimer
+		 .formLogin()// Page de login
+		 .permitAll()
 		 .and()
 		 .logout()
 		 .logoutUrl("/logout")
-		.logoutSuccessUrl("/mediathèque/users");
-	//	 .invalidateHttpSession(true);
+		.logoutSuccessUrl("/mediatheque/users")
+		 .invalidateHttpSession(true);
 		 
 	}
 
