@@ -45,8 +45,7 @@ public class Emprunt implements Serializable {
 
 
 
-	//@ManyToOne(fetch = FetchType.LAZY)
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	@JsonIgnore
 	private User user; 

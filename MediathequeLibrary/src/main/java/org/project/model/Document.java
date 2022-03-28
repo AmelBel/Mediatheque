@@ -23,6 +23,7 @@ import org.hibernate.annotations.ManyToAny;
 import org.project.controller.UsersViews;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -63,8 +64,8 @@ public class Document implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date dateParution; 
 	
-	//@ManyToMany(mappedBy="documents", fetch = FetchType.LAZY)
-	@ManyToMany(mappedBy="documents") 
+	@ManyToMany(mappedBy="documents", fetch = FetchType.LAZY)
+	@JsonIgnore 
 	private Set<Emprunt> emprunts = new HashSet<Emprunt>();
 	
 	
